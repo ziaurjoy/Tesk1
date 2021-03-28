@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3><a href='{% url "home" %}'>Home</a></h3>
+ <h1>Count {{ posts.count }}</h1>
+ 
+ {% for post in posts %}
+     <div class = "con-md-12 mt-2">
+      <div class="col-md-12" >
+          <h5 class="title">{{post.title}}</h5>
+          <p>User : <a href="{% url 'user-filtering-post' post.author %}">{{ post.author}}</a> Category : <a href="{% url 'caregory-filtering-post' post.category %}">{{ post.category }}</a></p>             
+          <p class="
+          text">{{ post.body }}</p>
+        </div>
+      </div>
+    <div/>
+
+ {% endfor %}
+
+ {% endblock %}

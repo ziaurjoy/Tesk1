@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class = "col-md-12">
+  <div class = "col-md-6 pt-4">
+  <h1>Hello, Qtec Solution Limited</h1>
+    <form method='post' action =''>
+    {% csrf_token %}
+      <div class="form-group ">
+        <label for="formGroupExampleInput2">Search Heare</label>
+        <input type="text" class="form-control" name="keyword" id="formGroupExampleInput2" placeholder="input kewords..">
+      </div>
+      <input type='submit' class="btn btn-success mt-2" />
+    </form>
+  </div>
+
+  <div class = "con-md-12 mt-2">
+  <h1>Count {{ posts.count }}</h1>
+  
+  {% for post in posts %}
+    <div class="col-md-12" >
+      <a href="{% url 'post-details' post.id %}" class="my-2 p-1">
+        <h5 class="title">{{post.title}}</h5>             
+        <p class="
+        text">{{ post.body|truncatewords:20 }}</p>
+        </a>
+      </div>
+    </div>
+
+  {% endfor %}
+  <div/>
+</div>
+
+{% endblock %}
